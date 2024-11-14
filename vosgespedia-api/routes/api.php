@@ -5,5 +5,6 @@ use App\Http\Controllers\AnimalController;
 
 Route::get('/animals/{name}', [AnimalController::class, 'listAnimal']);
 Route::get('/animals', [AnimalController::class, 'listAnimal']);
+Route::get('/animtrace/{id}', [AnimalController::class, 'getTraceFromId']);
 
 ?>

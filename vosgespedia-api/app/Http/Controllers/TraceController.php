@@ -9,7 +9,7 @@ class TraceController extends Controller
 {
     public function listTrace(Request $request) {
         $response = null;
-        console.log($request);
+        echo $request;
         if (isset($request->name)) {
             $response = Trace::where('trace_name','LIKE','%'.$request->name.'%');
         }

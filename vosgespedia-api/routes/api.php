@@ -12,6 +12,6 @@ Route::get('/traces', [TraceController::class, 'listTrace']);
 Route::get('/traceanim', [TraceController::class, 'getAnimalFromId']);
 Route::get('/cattr', [CategorieController::class, 'getTracesFromCat']);
 Route::get('/categories', [CategorieController::class, 'listCategories']);
-Route::get('/categories', [GenreController::class, 'listGenres']);
+Route::get('/genres', [GenreController::class, 'listGenres']);
 
 ?>

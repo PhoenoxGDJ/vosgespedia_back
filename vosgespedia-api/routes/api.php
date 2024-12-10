@@ -10,6 +10,6 @@ Route::get('/animtrace', [AnimalController::class, 'getTraceFromId']);
 Route::get('/traces', [TraceController::class, 'listTrace']);
 Route::get('/traceanim', [TraceController::class, 'getAnimalFromId']);
 Route::get('/cattr', [CategorieController::class, 'getTracesFromCat']);
-Route::get('/categories', [CategorieController::class, 'getCategories']);
+Route::get('/categories', [CategorieController::class, 'listCategories']);
 
 ?>

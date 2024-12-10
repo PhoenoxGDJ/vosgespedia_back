@@ -24,8 +24,17 @@ class CategorieController extends Controller
         return response()->json($response);
     }
 
-    public function getCategories() {
-        $response = Categorie::all();
+    public function listCategories(Request $request) {
+        $response = null;
+        if (isset($request->name)) {
+            $response = Categorie::where('category_name','like','%' . $request->name . '%')->get();
+        }
+        elseif (isset($request->id)) {
+            $response = Categorie::where('caid','=',$request->id)->get();
+        }
+        else {
+            $response = Categorie::all();
+        }
         return response()->json($response);
     }
 }

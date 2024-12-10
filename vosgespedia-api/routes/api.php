@@ -9,7 +9,7 @@ Route::get('/animals', [AnimalController::class, 'listAnimal']);
 Route::get('/animtrace', [AnimalController::class, 'getTraceFromId']);
 Route::get('/traces', [TraceController::class, 'listTrace']);
 Route::get('/traceanim', [TraceController::class, 'getAnimalFromId']);
-Route::get('/catanim', [CategorieController::class, 'getTracesFromCat']);
+Route::get('/cattr', [CategorieController::class, 'getTracesFromCat']);
 Route::get('/categories', [CategorieController::class, 'getCategories']);
 
 ?>

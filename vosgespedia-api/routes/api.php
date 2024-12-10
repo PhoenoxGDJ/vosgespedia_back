@@ -3,10 +3,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AnimalController;
 use App\Http\Controllers\TraceController;
+use App\Http\Controllers\CategorieController;
 
 Route::get('/animals', [AnimalController::class, 'listAnimal']);
 Route::get('/animtrace', [AnimalController::class, 'getTraceFromId']);
 Route::get('/traces', [TraceController::class, 'listTrace']);
 Route::get('/traceanim', [TraceController::class, 'getAnimalFromId']);
+Route::get('/catanim', [CategorieController::class, 'getTracesFromCat']);
+Route::get('/categories', [CategorieController::class, 'getCategories']);
 
 ?>

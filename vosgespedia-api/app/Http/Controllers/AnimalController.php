@@ -10,10 +10,10 @@ class AnimalController extends Controller
     public function listAnimal(Request $request) {
         $response = null;
         if (isset($request->name)) {
-            $response = Animal::where('anim_name','LIKE','%'.$request->name.'%');
+            $response = Animal::where('anim_name','like','%' . $request->name . '%')->get();
         }
         elseif (isset($request->id)) {
-            $response = Animal::where('anim_id','=',$request->id);
+            $response = Animal::where('anim_id','=',$request->id)->get();
         }
         else {
             $response = Animal::all();

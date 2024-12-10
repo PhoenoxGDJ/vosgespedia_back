@@ -11,10 +11,10 @@ class TraceController extends Controller
         $response = null;
         echo $request;
         if (isset($request->name)) {
-            $response = Trace::where('trace_name','LIKE','%'.$request->name.'%');
+            $response = Trace::where('trace_name','LIKE',"%$request->name%")->get();
         }
         elseif (isset($request->id)) {
-            $response = Trace::where('trid','=',$request->id);
+            $response = Trace::where('trid','=',$request->id)->get();
         }
         else {
             $response = Trace::all();

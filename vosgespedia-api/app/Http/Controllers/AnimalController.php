@@ -7,17 +7,17 @@ use App\Models\Animal;
 
 class AnimalController extends Controller
 {
-    public function listAnimal(Request $request) {
-        $response = null;
-        if (isset($request->name)) {
-            $response = Animal::where('anim_name','like','%' . $request->name . '%')->get();
-        }
-        elseif (isset($request->id)) {
-            $response = Animal::where('anim_id','=',$request->id)->get();
-        }
-        else {
+    public function listAnimal(Request $request, string $arg = null) {
+        if ($arg == null) {
             $response = Animal::all();
         }
+        else {
+            if (is_numeric($arg)) {
+                $response = Animal::where('anim_id', '=',(int) $arg)->get();
+            } else {
+                $response = Animal::where('anim_name', 'LIKE', "%$arg%")->get();
+            }
+        } 
         return response()->json($response);
     }
 

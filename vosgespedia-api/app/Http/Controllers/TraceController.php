@@ -7,31 +7,32 @@ use App\Models\Trace;
 
 class TraceController extends Controller
 {
-    public function listTrace(Request $request) {
-        $response = null;
-        echo $request;
-        if (isset($request->name)) {
-            $response = Trace::where('trace_name','LIKE',"%$request->name%")->get();
-        }
-        elseif (isset($request->id)) {
-            $response = Trace::where('trid','=',$request->id)->get();
-        }
-        else {
+    public function listTrace(Request $request, string $arg = null)
+    {
+        if ($arg == null) {
             $response = Trace::all();
         }
+        else {
+            if (is_numeric($arg)) {
+                $response = Trace::where('trid', '=',(int) $arg)->get();
+            } else {
+                $response = Trace::where('trace_name', 'LIKE', "%$arg%")->get();
+            }
+        } 
         return response()->json($response);
     }
 
-    public function getAnimalFromId(Request $request) {
+    public function getAnimalFromId(Request $request)
+    {
         $response = null;
         if (isset($request->id)) {
-            $response = Trace::where('trid','=',$request->id)
-            ->leftJoin('anim_traces', function ($join) {
-                $join->on('traces.trid', '=', 'anim_traces.atr_trid');
-            })
-            ->leftJoin('animals', function ($join) {
-                $join->on('anim_traces.atr_aid', '=', 'animals.anim_id');
-            })->get();
+            $response = Trace::where('trid', '=', $request->id)
+                ->leftJoin('anim_traces', function ($join) {
+                    $join->on('traces.trid', '=', 'anim_traces.atr_trid');
+                })
+                ->leftJoin('animals', function ($join) {
+                    $join->on('anim_traces.atr_aid', '=', 'animals.anim_id');
+                })->get();
         }
         return response()->json($response);
     }

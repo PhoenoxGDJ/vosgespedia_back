@@ -21,6 +21,7 @@ Route::get('/cattr/{arg}', [CategorieController::class, 'getTracesFromCat'])->mi
 Route::get('/categories', [CategorieController::class, 'listCategories'])->middleware(CorsHeader::class);
 Route::get('/categories/{arg}', [CategorieController::class, 'listCategories'])->middleware(CorsHeader::class);
 
+Route::get('/genran/{arg}', [GenreController::class, 'getAnimalsFromGenre'])->middleware(CorsHeader::class);
 Route::get('/genres', [GenreController::class, 'listGenres'])->middleware(CorsHeader::class);
 Route::get('/genres/{arg}', [GenreController::class, 'listGenres'])->middleware(CorsHeader::class);
 

@@ -22,4 +22,27 @@ class GenreController extends Controller
 
         return response()->json($response);
     }
+
+    public function getAnimalsFromGenre(Request $request, string $arg = null)
+    {
+        if ($arg == null) {
+            echo 'must have an argument, use it like {base_url}/categories/id or {base_url}/categories/name';
+        } else {
+            if (is_numeric($arg)) {
+                /* $response = Categorie::where('categories.caid', '=', $arg)->limit(1)
+                    ->leftJoin('trace_categories', 'categories.caid', '=', 'trace_categories.trca_caid')
+                    ->leftJoin('traces', 'categories.caid', '=', 'trace_categories.trca_caid')->get(); */
+                $response = Genre::where('genres.gid','=', $arg)
+                ->leftJoin('anim_genres', 'genres.gid', '=', 'anim_genres.ag_gid')
+                ->leftJoin('animals', 'ag_aid', '=', 'animals.anim_id')
+                ->get();
+            } else {
+                $response = Genre::where('genres.genre_name', 'like', '%' . $arg . '%')
+                    ->leftJoin('anim_genres', 'genres.gid', '=', 'anim_genres.ag_gid')
+                    ->leftJoin('animals', 'ag_aid', '=', 'animals.anim_id')
+                    ->get();
+            }
+        }
+        return response()->json($response);
+    }
 }

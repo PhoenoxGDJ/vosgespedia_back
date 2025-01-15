@@ -20,5 +20,8 @@ endpoints :
 + http://vosgespedia.sc3zeep6040.universe.wf/api/genres/{id} : permets de récupérer le genre d'id {$id}
 + http://vosgespedia.sc3zeep6040.universe.wf/api/genres/{name} : permets de récupérer les genres avec un nom similaire à {$name}
 
++ http://vosgespedia.sc3zeep6040.universe.wf/api/genran/{id} : permets de récupérer la liste d'animaux de catégorie d'id {$id}
++ http://vosgespedia.sc3zeep6040.universe.wf/api/genran/{name} : permets de récupérer la liste d'animaux de catégorie de nom {$name}
+
 + http://vosgespedia.sc3zeep6040.universe.wf/api/cattr/{id} : permets de récupérer les traces de la catégorie d'id {$id}
 + http://vosgespedia.sc3zeep6040.universe.wf/api/cattr/{name} : permets de récupérer les traces de la catégorie avec un nom similaire à {$name}
